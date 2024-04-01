@@ -1,0 +1,87 @@
+{
+    "fileTypes": [],
+    "injectionSelector": "L:source.js -comment -(string -meta.embedded)",
+    "patterns": [
+        {
+            "include": "#sencha-tpl-block"
+        },
+		{
+            "include": "#sencha-tpl-inline"
+        },
+		{
+			"include": "inline-comment"
+		}
+    ],
+    "repository": {
+        "sencha-tpl-block": {
+            "begin": "(`)(?=.*<)",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.template.begin.js"
+                }
+            },
+            "end": "(`)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.template.end.js"
+                }
+            },
+            "name": "meta.block.template.js",
+            "contentName": "meta.embedded.block.html",
+            "patterns": [
+                {
+                    "include": "text.html.basic"
+                },
+				{
+					"include": "#embedded-expression"
+				}
+            ]
+        },
+		"sencha-tpl-inline": {
+			"begin": "(')(?=.*<)",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.js"
+				}
+			},
+			"end": "(')",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.js"
+				}
+			},
+			"name": "meta.string-quoted.single.js",
+			"contentName": "meta.embedded.block.html",
+			"patterns": [
+				{
+					"include": "text.html.basic"
+				},
+				{
+					"include": "#embedded-expression"
+				}
+			]
+		},
+		"embedded-expression": {
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.embedded.begin.js"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.embedded.end.js"
+				}
+			},
+			"name": "meta.embedded.expression.js",
+			"patterns": [
+				{
+                    "match": "[^}]+",
+                    "name": "variable.other.readwrite"
+                }
+			]
+		}
+    },
+    "scopeName": "inline.sencha-tpl-highlight"
+}

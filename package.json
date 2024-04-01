@@ -1,0 +1,22 @@
+{
+  "name": "sencha-tpl-highlight",
+  "displayName": "Sencha TPL Highlight",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "grammars": [{
+      "injectTo": ["source.js", "source.jsx", "source.ts", "source.tsx"],
+      "scopeName": "inline.sencha-tpl-highlight",
+      "path": "./syntaxes/sencha_tpl_highlight.json",
+      "embeddedLanguages": {
+        "meta.embedded.block.html": "html"
+      }
+    }]
+  }
+}
